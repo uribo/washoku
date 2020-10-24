@@ -41,7 +41,7 @@ remotes::install_github("uribo/washoku")
 
 - `step_tokenize_jp()`
 
-```{r}
+```{r, message=FALSE}
 library(washoku)
 library(sudachir)
 library(recipes)

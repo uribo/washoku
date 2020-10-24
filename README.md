@@ -34,21 +34,6 @@ remotes::install_github("uribo/washoku")
 
 ``` r
 library(washoku)
-#> Loading required package: recipes
-#> Loading required package: dplyr
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-#> 
-#> Attaching package: 'recipes'
-#> The following object is masked from 'package:stats':
-#> 
-#>     step
 library(sudachir)
 library(recipes)
 library(textrecipes)
