@@ -2,7 +2,7 @@
 % Please edit documentation in R/tokenize.R
 \name{step_tokenize_jp}
 \alias{step_tokenize_jp}
-\title{#' Tokenization of Japanese character variables}
+\title{Tokenization of Japanese character variables}
 \usage{
 step_tokenize_jp(
   recipe,

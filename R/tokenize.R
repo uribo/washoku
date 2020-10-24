@@ -1,4 +1,4 @@
-#' #' Tokenization of Japanese character variables
+#' Tokenization of Japanese character variables
 #'
 #' [step_tokenize_jp()] creates a *specification* of a recipe step that
 #'will convert a character predictor into a [tokenlist_jp].
