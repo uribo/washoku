@@ -12,3 +12,10 @@ tokenlist_jp(tokens = list())
 \description{
 Token list for Japanese character
 }
+\examples{
+\dontrun{
+tokens <- list(purrr::set_names(c(intToUtf8(c(26519, 27278))),
+               c(intToUtf8(c(21517, 35422)))))
+tokenlist_jp(tokens)
+}
+}

@@ -15,12 +15,7 @@ step_tokenize_jp <- function(
                  type = "surface",
                  pos = TRUE),
   skip = FALSE,
-  id = rand_id("tokenize_jp")
-) {
-
-  ## The variable selectors are not immediately evaluated by using
-  ##  the `quos()` function in `rlang`. `ellipse_check()` captures
-  ##  the values and also checks to make sure that they are not empty.
+  id = rand_id("tokenize_jp")) {
   terms <- ellipse_check(...)
 
   add_step(

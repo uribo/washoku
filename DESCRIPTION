@@ -22,7 +22,8 @@ Imports:
     vctrs (>= 0.3.4)
 Suggests:
     reticulate (>= 1.17),
-    sudachir (>= 0.0.9000)
+    sudachir (>= 0.0.9000),
+    testthat (>= 2.3.2)
 Remotes:
   uribo/sudachir
 LazyData: true
