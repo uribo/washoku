@@ -1,0 +1,31 @@
+Package: washoku
+Title: Extra 'recipes' for Japanese Text, Date and Address Processing
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Shinya",
+           family = "Uryu",
+           role = c("aut", "cre"),
+           email = "suika1127@gmail.com",
+           comment = c(ORCID = "0000-0002-0493-6186"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends:
+    R (>= 2.10),
+    recipes (>= 0.1.4)
+Imports:
+    magrittr (>= 1.5),
+    dplyr (>= 1.0.2),
+    purrr (>= 0.3.4),
+    rlang (>= 0.4.8),
+    textrecipes (>= 0.3.0),
+    tibble (>= 3.0.4),
+    vctrs (>= 0.3.4)
+Suggests:
+    reticulate (>= 1.17),
+    sudachir (>= 0.0.9000)
+Remotes:
+  uribo/sudachir
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

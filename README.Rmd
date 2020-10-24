@@ -1,0 +1,79 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# washoku <a href='https://https://uribo.github.io/washoku/'><img src='man/figures/logo.png' align="right" height="139" /></a>
+
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/washoku)](https://CRAN.R-project.org/package=washoku)
+[![R build status](https://github.com/uribo/washoku/workflows/R-CMD-check/badge.svg)](https://github.com/uribo/washoku/actions)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+The goal of washoku is to ...
+
+## Installation
+
+This package is not yet on CRAN, but can be installed from GitHub with:
+
+
+``` r
+if (!requireNamespace("remotes"))
+  install.packages("remotes")
+
+remotes::install_github("uribo/washoku")
+```
+
+## Usage
+
+### recipe `step_*()`
+
+- `step_tokenize_jp()`
+
+```{r}
+library(washoku)
+library(sudachir)
+library(recipes)
+library(textrecipes)
+```
+
+``` r
+sudachir::install_sudachipy()
+```
+
+```{r}
+reticulate::use_condaenv("r-sudachipy", required = TRUE)
+```
+
+```{r}
+d <-
+  tibble::tibble(
+  id = c(1, 1, 2),
+  txt = c("事実を読者の前に告白すると、去年の八月頃すでに自分の小説を紙上に連載すべきはずだったのである。",
+          "吾輩は猫である。名前はまだ無い。",
+          "国家公務員はかつ丼を食べたい。"))
+
+rec <-
+  d %>% 
+  recipe(id ~ txt) %>% 
+  step_tokenize_jp(txt, options = list(mode = "A",
+                                       type = "surface",
+                                       pos = TRUE)) %>%
+  textrecipes::step_pos_filter(txt, keep_tags = c("名詞", "動詞")) %>%
+  textrecipes::step_untokenize(txt)
+
+bake(prep(rec), new_data = NULL)
+```
+
+
