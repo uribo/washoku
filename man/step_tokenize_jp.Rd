@@ -10,6 +10,7 @@ step_tokenize_jp(
   role = NA,
   trained = FALSE,
   columns = NULL,
+  engine = "sudachir",
   options = list(mode = "A", type = "surface", pos = TRUE),
   skip = FALSE,
   id = rand_id("tokenize_jp")
@@ -34,7 +35,9 @@ baked.}
 encoding. This is \code{NULL} until the step is trained by
 \code{\link[recipes:prep]{recipes::prep.recipe()}}.}
 
-\item{options}{list}
+\item{engine}{Implement token engine package. Defaults to 'sudachir'.}
+
+\item{options}{list. path to engine's function.}
 
 \item{skip}{A logical. Should the step be skipped when the
 recipe is baked by \code{\link[recipes:bake]{recipes::bake.recipe()}}? While all

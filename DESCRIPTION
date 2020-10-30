@@ -21,6 +21,7 @@ Imports:
     tibble (>= 3.0.4),
     vctrs (>= 0.3.4)
 Suggests:
+    RcppMeCab (>= 0.0.1.2),
     reticulate (>= 1.17),
     sudachir (>= 0.0.9000),
     testthat (>= 2.3.2)

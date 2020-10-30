@@ -3,7 +3,8 @@
 #' [step_tokenize_jp()] creates a *specification* of a recipe step that
 #'will convert a character predictor into a [tokenlist_jp].
 #' @inheritParams textrecipes::step_tokenize
-#' @param options list
+#' @param engine Implement token engine package. Defaults to 'sudachir'.
+#' @param options list. path to engine's function.
 #' @export
 step_tokenize_jp <- function(
   recipe,
@@ -11,6 +12,7 @@ step_tokenize_jp <- function(
   role = NA,
   trained = FALSE,
   columns = NULL,
+  engine = "sudachir",
   options = list(mode = "A",
                  type = "surface",
                  pos = TRUE),
@@ -25,6 +27,7 @@ step_tokenize_jp <- function(
       trained = trained,
       role = role,
       columns = columns,
+      engine = engine,
       options = options,
       skip = skip,
       id = id
@@ -33,12 +36,15 @@ step_tokenize_jp <- function(
 }
 
 step_tokenize_jp_new <-
-  function(terms, role, trained, columns, options, skip, id) {
+  function(terms, role, trained, columns, engine, options, skip, id) {
+    rlang::arg_match(engine,
+                     c("sudachir", "RcppMeCab"))
     step(
       subclass = "tokenize_jp",
       terms = terms,
       role = role,
       trained = trained,
+      engine = engine,
       columns = columns,
       options = options,
       skip = skip,
@@ -54,6 +60,7 @@ prep.step_tokenize_jp <- function(x, training, info = NULL, ...) {
     trained = TRUE,
     role = x$role,
     columns = col_names,
+    engine = x$engine,
     options = x$options,
     skip = x$skip,
     id = x$id
@@ -63,26 +70,34 @@ prep.step_tokenize_jp <- function(x, training, info = NULL, ...) {
 #' @export
 bake.step_tokenize_jp <- function(object, new_data, ...) {
   col_names <- object$columns
-
   for (i in seq_along(col_names)) {
-    new_data[, col_names[i]] <- tokenizer_fun(new_data[, col_names[i]],
-                                              col_names[i],
+    new_data[, col_names[i]] <- tokenizer_fun(data = new_data[, col_names[i]],
+                                              name = col_names[i],
+                                              engine = object$engine,
                                               options = object$options)
   }
   tibble::as_tibble(new_data)
 }
 
-tokenizer_fun <- function(data, name, options, ...) {
+tokenizer_fun <- function(data, name, engine, options, ...) {
   recipes::check_type(data[, name], quant = FALSE)
-  token_list <-
-    rlang::exec("form", x = data[, 1, drop = TRUE], !!!options)
-
-  #if (textrecipes:::is_tokenlist(token_list)) {
-  #  out <- tibble::tibble(token_list)
-  #} else {
-    #out <- tibble::tibble(tokenlist_jp(tokens = token_list))
-    out <- tibble::tibble(tokenlist_jp(token_list))
-  #}
+  data <-
+    factor_to_text(data, name)
+  if (engine == "sudachir") {
+    token_list <-
+      rlang::exec("form",
+                  x = data[, 1, drop = TRUE],
+                  !!!options)
+  } else if (engine == "RcppMeCab") {
+    token_list <-
+      rlang::exec("pos_purrr",
+                  x = data[, 1, drop = TRUE],
+                  format = "list",
+                  join = FALSE,
+                  !!!options)
+  }
+  out <-
+    tibble::tibble(tokenlist_jp(token_list))
   names(out) <- name
   out
 }
@@ -104,5 +119,22 @@ print.step_tokenize_jp <-
 #' @keywords internal
 #' @export
 required_pkgs.step_tokenize_jp <- function(x, ...) {
-  c("sudachir", "textrecipes")
+  c("sudachir", "RcppMeCab", "textrecipes")
+}
+
+pos_purrr <- function(x, ...) {
+  x %>%
+    purrr::map(
+      ~ unname(RcppMeCab::pos(sentence = .x, ...))
+    ) %>%
+    purrr::flatten()
+}
+
+factor_to_text <- function(data, names) {
+  for (i in seq_along(names)) {
+    if (is.factor(data[, names[i], drop = TRUE]))
+      data[, names[i]] <-
+        as.character.factor(data[, names[i], drop = TRUE])
+  }
+  data
 }
