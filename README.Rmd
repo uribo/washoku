@@ -40,6 +40,7 @@ remotes::install_github("uribo/washoku")
 ### recipe `step_*()`
 
 - `step_tokenize_jp()`
+    - Tokenizer (engine): [`Sudachi`](https://github.com/WorksApplications/Sudachi) ([sudachir](https://github.com/uribo/sudachir)), [`MeCab`](https://taku910.github.io/mecab/) ([RcppMeCab](https://github.com/junhewk/RcppMeCab))
 
 ```{r, message=FALSE}
 library(washoku)
@@ -47,6 +48,17 @@ library(sudachir)
 library(recipes)
 library(textrecipes)
 ```
+
+```{r}
+d <-
+  tibble::tibble(
+  id = c(1, 1, 2),
+  txt = c("事実を読者の前に告白すると、去年の八月頃すでに自分の小説を紙上に連載すべきはずだったのである。",
+          "吾輩は猫である。名前はまだ無い。",
+          "国家公務員はかつ丼を食べたい。"))
+```
+
+**Sudachi**
 
 ``` r
 sudachir::install_sudachipy()
@@ -57,23 +69,35 @@ reticulate::use_condaenv("r-sudachipy", required = TRUE)
 ```
 
 ```{r}
-d <-
-  tibble::tibble(
-  id = c(1, 1, 2),
-  txt = c("事実を読者の前に告白すると、去年の八月頃すでに自分の小説を紙上に連載すべきはずだったのである。",
-          "吾輩は猫である。名前はまだ無い。",
-          "国家公務員はかつ丼を食べたい。"))
-
-rec <-
+rec_sudachi <- 
   d %>% 
   recipe(id ~ txt) %>% 
-  step_tokenize_jp(txt, options = list(mode = "A",
-                                       type = "surface",
-                                       pos = TRUE)) %>%
+  step_tokenize_jp(txt, 
+                   engine = "sudachir", 
+                   options = list(mode = "C", type = "surface", pos = TRUE))
+
+rec_sudachi <-
+  rec_sudachi %>%
   textrecipes::step_pos_filter(txt, keep_tags = c("名詞", "動詞")) %>%
   textrecipes::step_untokenize(txt)
 
-bake(prep(rec), new_data = NULL)
+bake(prep(rec_sudachi), new_data = NULL)
 ```
 
+**MeCab**
 
+```{r}
+rec_mecab <- 
+  d %>% 
+  recipe(id ~ txt) %>% 
+  step_tokenize_jp(txt, 
+                   engine = "RcppMeCab",
+                   options = NULL)
+
+rec_mecab <- 
+  rec_mecab %>% 
+  textrecipes::step_pos_filter(txt, keep_tags = c("名詞", "動詞")) %>%
+  textrecipes::step_untokenize(txt)
+
+bake(prep(rec_mecab), new_data = NULL)
+```
