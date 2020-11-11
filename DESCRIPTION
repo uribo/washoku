@@ -7,7 +7,10 @@ Authors@R:
            role = c("aut", "cre"),
            email = "suika1127@gmail.com",
            comment = c(ORCID = "0000-0002-0493-6186"))
-Description: What the package does (one paragraph).
+Description: In order to handle Japanese text in the feature engineering 
+  process, morphological analysis is necessary. Following the framework of 
+  `recipes`, to provide steps that can be applied to `textrecipes` for 
+  subsequent processing.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:

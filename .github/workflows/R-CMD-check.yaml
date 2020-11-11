@@ -63,6 +63,19 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
+      - name: Install MeCab
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt update
+          sudo apt install \
+            libmecab-dev \
+            mecab \
+            mecab-ipadic-utf8
+        if : runner.os == "macOS"
+        run: |
+          brew install mecab
+          brew install mecab-ipadic
+
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
