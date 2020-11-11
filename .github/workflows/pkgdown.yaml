@@ -16,6 +16,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: Install MeCab
+        run: |
+          brew install mecab
+          brew install mecab-ipadic
+
       - name: Query dependencies
         run: |
           install.packages('remotes')

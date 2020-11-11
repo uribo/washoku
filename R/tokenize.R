@@ -5,6 +5,10 @@
 #' @inheritParams textrecipes::step_tokenize
 #' @param engine Implement token engine package. Defaults to 'sudachir'.
 #' @param options list. path to engine's function.
+#' @details
+#' The following packages are available for the `engine`.
+#' - sudachir (Sudachi)
+#' - RcppMeCab (MeCab)
 #' @export
 step_tokenize_jp <- function(
   recipe,

@@ -53,3 +53,10 @@ subsequent operations.}
 \code{\link[=step_tokenize_jp]{step_tokenize_jp()}} creates a \emph{specification} of a recipe step that
 will convert a character predictor into a \link{tokenlist_jp}.
 }
+\details{
+The following packages are available for the \code{engine}.
+\itemize{
+\item sudachir (Sudachi)
+\item RcppMeCab (MeCab)
+}
+}

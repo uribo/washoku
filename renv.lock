@@ -9,12 +9,19 @@
     ]
   },
   "Packages": {
-    "KernSmooth": {
-      "Package": "KernSmooth",
-      "Version": "2.23-17",
+    "BH": {
+      "Package": "BH",
+      "Version": "1.72.0-3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "bbff70c8c0357b5b88238c83f680fcd3"
+      "Hash": "8f9ce74c6417d61f0782cbae5fd2b7b0"
+    },
+    "KernSmooth": {
+      "Package": "KernSmooth",
+      "Version": "2.23-18",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9e703ad8bf0e99f3691f05da32dfe68b"
     },
     "MASS": {
       "Package": "MASS",
@@ -43,6 +50,20 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "125dc7a0ed375eb68c0ce533b48d291f"
+    },
+    "RcppMeCab": {
+      "Package": "RcppMeCab",
+      "Version": "0.0.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "65dfb06dacad2dc0b1de68aff4ee431e"
+    },
+    "RcppParallel": {
+      "Package": "RcppParallel",
+      "Version": "5.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "551d50addb18c7b99637aa377a25afc8"
     },
     "SQUAREM": {
       "Package": "SQUAREM",
@@ -445,7 +466,8 @@
       "Package": "renv",
       "Version": "0.12.2",
       "Source": "Repository",
-      "Repository": "CRAN"
+      "Repository": "CRAN",
+      "Hash": "398cc1ea892e1aade66d1ecbb2874d24"
     },
     "reticulate": {
       "Package": "reticulate",
@@ -505,15 +527,10 @@
     },
     "sudachir": {
       "Package": "sudachir",
-      "Version": "0.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "sudachir",
-      "RemoteUsername": "uribo",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "970f37222433440ef1bb6bdf733b9484de4c551d",
-      "Hash": "14a7bd52848617a0d1b17a84c806023f"
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "276301006a4e06a727d4990b819344d8"
     },
     "survival": {
       "Package": "survival",
