@@ -19,7 +19,8 @@ step_tokenize_jp <- function(
   engine = "sudachir",
   options = list(mode = "A",
                  type = "surface",
-                 pos = TRUE),
+                 pos = TRUE,
+                 instance = NULL),
   skip = FALSE,
   id = rand_id("tokenize_jp")) {
   recipes::recipes_pkg_check(required_pkgs.step_tokenize_jp())

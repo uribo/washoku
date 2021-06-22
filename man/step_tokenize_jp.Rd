@@ -11,7 +11,7 @@ step_tokenize_jp(
   trained = FALSE,
   columns = NULL,
   engine = "sudachir",
-  options = list(mode = "A", type = "surface", pos = TRUE),
+  options = list(mode = "A", type = "surface", pos = TRUE, instance = NULL),
   skip = FALSE,
   id = rand_id("tokenize_jp")
 )
