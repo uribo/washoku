@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tokenization of Japanese character variables — step_tokenize_jp • washoku</title>
+<title>Objects exported from other packages — reexports • washoku</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,13 @@
 
 
 
-<meta property="og:title" content="Tokenization of Japanese character variables — step_tokenize_jp" />
-<meta property="og:description" content="step_tokenize_jp() creates a specification of a recipe step that
-will convert a character predictor into a tokenlist_jp." />
+<meta property="og:title" content="Objects exported from other packages — reexports" />
+<meta property="og:description" content="These objects are imported from other packages. Follow the links
+below to see their documentation.
+
+  genericsrequired_pkgs
+
+" />
 <meta property="og:image" content="https://uribo.github.io/washoku/logo.png" />
 
 
@@ -115,89 +119,21 @@ will convert a character predictor into a tokenlist_jp." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tokenization of Japanese character variables</h1>
+    <h1>Objects exported from other packages</h1>
     
-    <div class="hidden name"><code>step_tokenize_jp.Rd</code></div>
+    <div class="hidden name"><code>reexports.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>step_tokenize_jp()</code> creates a <em>specification</em> of a recipe step that
-will convert a character predictor into a <a href='tokenlist_jp.html'>tokenlist_jp</a>.</p>
+    <p>These objects are imported from other packages. Follow the links
+below to see their documentation.</p>
+<dl>
+  <dt>generics</dt><dd><p><code><a href='https://generics.r-lib.org/reference/required_pkgs.html'>required_pkgs</a></code></p></dd>
+
+</dl>
     </div>
 
-    <pre class="usage"><span class='fu'>step_tokenize_jp</span><span class='op'>(</span>
-  <span class='va'>recipe</span>,
-  <span class='va'>...</span>,
-  role <span class='op'>=</span> <span class='cn'>NA</span>,
-  trained <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  columns <span class='op'>=</span> <span class='cn'>NULL</span>,
-  engine <span class='op'>=</span> <span class='st'>"sudachir"</span>,
-  options <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>mode <span class='op'>=</span> <span class='st'>"A"</span>, type <span class='op'>=</span> <span class='st'>"surface"</span>, pos <span class='op'>=</span> <span class='cn'>TRUE</span>, instance <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
-  skip <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  id <span class='op'>=</span> <span class='fu'>rand_id</span><span class='op'>(</span><span class='st'>"tokenize_jp"</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>recipe</th>
-      <td><p>A recipe object. The step will be added to the
-sequence of operations for this recipe.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>One or more selector functions to choose variables.
-For <code><a href='https://textrecipes.tidymodels.org/reference/step_tokenize.html'>step_tokenize()</a></code>, this indicates the variables to be encoded
-into a <a href='https://textrecipes.tidymodels.org/reference/tokenlist.html'>tokenlist</a>. See <code><a href='https://recipes.tidymodels.org/reference/selections.html'>recipes::selections()</a></code> for more
-details. For the <code>tidy</code> method, these are not currently used.</p></td>
-    </tr>
-    <tr>
-      <th>role</th>
-      <td><p>Not used by this step since no new variables are
-created.</p></td>
-    </tr>
-    <tr>
-      <th>trained</th>
-      <td><p>A logical to indicate if the recipe has been
-baked.</p></td>
-    </tr>
-    <tr>
-      <th>columns</th>
-      <td><p>A list of tibble results that define the
-encoding. This is <code>NULL</code> until the step is trained by
-<code><a href='https://recipes.tidymodels.org/reference/prep.html'>recipes::prep.recipe()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>engine</th>
-      <td><p>Implement token engine package. Defaults to 'sudachir'.</p></td>
-    </tr>
-    <tr>
-      <th>options</th>
-      <td><p>list. path to engine's function.</p></td>
-    </tr>
-    <tr>
-      <th>skip</th>
-      <td><p>A logical. Should the step be skipped when the
-recipe is baked by <code><a href='https://recipes.tidymodels.org/reference/bake.html'>recipes::bake.recipe()</a></code>? While all
-operations are baked when <code><a href='https://recipes.tidymodels.org/reference/prep.html'>recipes::prep.recipe()</a></code> is run, some
-operations may not be able to be conducted on new data (e.g.
-processing the outcome variable(s)). Care should be taken when
-using <code>skip = TRUE</code> as it may affect the computations for
-subsequent operations.</p></td>
-    </tr>
-    <tr>
-      <th>id</th>
-      <td><p>A character string that is unique to this step to identify it</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The following packages are available for the <code>engine</code>.</p><ul>
-<li><p>sudachir (Sudachi)</p></li>
-<li><p>RcppMeCab (MeCab)</p></li>
-</ul>
 
 
   </div>
