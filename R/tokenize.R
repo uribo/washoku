@@ -22,6 +22,7 @@ step_tokenize_jp <- function(
                  pos = TRUE),
   skip = FALSE,
   id = rand_id("tokenize_jp")) {
+  recipes::recipes_pkg_check(required_pkgs.step_tokenize_jp())
   terms <- ellipse_check(...)
 
   add_step(

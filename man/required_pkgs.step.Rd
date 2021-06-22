@@ -4,7 +4,7 @@
 \alias{required_pkgs.step_tokenize_jp}
 \title{S3 methods for tracking which additional packages are needed for steps.}
 \usage{
-required_pkgs.step_tokenize_jp(x, ...)
+\method{required_pkgs}{step_tokenize_jp}(x, ...)
 }
 \arguments{
 \item{x}{A recipe step}

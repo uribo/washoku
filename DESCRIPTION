@@ -17,6 +17,7 @@ Depends:
     R (>= 2.10),
     recipes (>= 0.1.4)
 Imports:
+    generics (>= 0.1.0),
     magrittr (>= 1.5),
     purrr (>= 0.3.4),
     rlang (>= 0.4.8),

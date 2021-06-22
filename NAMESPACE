@@ -2,10 +2,12 @@
 
 S3method(bake,step_tokenize_jp)
 S3method(prep,step_tokenize_jp)
+S3method(required_pkgs,step_tokenize_jp)
 export("%>%")
-export(required_pkgs.step_tokenize_jp)
+export(required_pkgs)
 export(step_tokenize_jp)
 export(tokenlist_jp)
+importFrom(generics,required_pkgs)
 importFrom(magrittr,"%>%")
 importFrom(recipes,add_step)
 importFrom(recipes,bake)
