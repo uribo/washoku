@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://uribo.github.io/washoku/404.html</loc>
+  </url>
+  <url>
+    <loc>https://uribo.github.io/washoku/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://uribo.github.io/washoku/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://uribo.github.io/washoku/authors.html</loc>
+  </url>
+  <url>
     <loc>https://uribo.github.io/washoku/index.html</loc>
+  </url>
+  <url>
+    <loc>https://uribo.github.io/washoku/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://uribo.github.io/washoku/reference/index.html</loc>
   </url>
   <url>
     <loc>https://uribo.github.io/washoku/reference/pipe.html</loc>
