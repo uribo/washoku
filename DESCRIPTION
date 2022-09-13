@@ -33,4 +33,4 @@ Remotes:
   uribo/sudachir
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
