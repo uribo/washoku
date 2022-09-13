@@ -15,13 +15,13 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
     R (>= 2.10),
-    recipes (>= 0.1.4)
+    recipes (>= 1.0.0)
 Imports:
     generics (>= 0.1.0),
     magrittr (>= 1.5),
     purrr (>= 0.3.4),
     rlang (>= 0.4.8),
-    textrecipes (>= 0.3.0),
+    textrecipes (>= 1.0.0),
     tibble (>= 3.0.4),
     vctrs (>= 0.3.4)
 Suggests:
