@@ -44,7 +44,7 @@ step_tokenize_jp <- function(
 step_tokenize_jp_new <-
   function(terms, role, trained, columns, engine, options, skip, id) {
     rlang::arg_match(engine,
-                     c("sudachir", "RcppMeCab"))
+                     c("sudachir", "RcppMeCab", "RMeCab"))
     step(
       subclass = "tokenize_jp",
       terms = terms,
@@ -101,6 +101,11 @@ tokenizer_fun <- function(data, name, engine, options, ...) {
                   format = "list",
                   join = FALSE,
                   !!!options)
+  } else if (engine == "RMeCab") {
+    token_list <-
+      rlang::exec("pos_purrr_rmecab",
+                x = data[, 1, drop = TRUE],
+                !!!options)
   }
   out <-
     tibble::tibble(tokenlist_jp(token_list))
@@ -125,7 +130,8 @@ print.step_tokenize_jp <-
 #' @keywords internal
 #' @export
 required_pkgs.step_tokenize_jp <- function(x, ...) {
-  c("sudachir", "RcppMeCab", "textrecipes")
+  c("sudachir", "RcppMeCab", "RMeCab",
+    "textrecipes")
 }
 
 pos_purrr <- function(x, ...) {
@@ -134,6 +140,13 @@ pos_purrr <- function(x, ...) {
       ~ unname(RcppMeCab::pos(sentence = .x, ...))
     ) %>%
     purrr::flatten()
+}
+
+pos_purrr_rmecab <- function(x, mypref = 0, dic = "", mecabrc = "", etc = "") {
+  x |>
+    purrr::map(
+      ~ RMeCab::RMeCabC(.x, mypref, dic, mecabrc, etc) |>
+        unlist())
 }
 
 factor_to_text <- function(data, names) {

@@ -27,9 +27,11 @@ Imports:
 Suggests:
     RcppMeCab (>= 0.0.1.2),
     reticulate (>= 1.17),
+    RMeCab (>= 1.10),
     sudachir (>= 0.1.0.9000),
     testthat (>= 2.3.2)
 Remotes:
+  IshidaMotohiro/RMeCab,
   uribo/sudachir
 LazyData: true
 Roxygen: list(markdown = TRUE)
